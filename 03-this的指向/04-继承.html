@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+//    继承的实现方式
+//    1. 混入式继承（mix-in）
+var obj = {};
+    var obj1 = {
+        name:"",
+        age:18
+    }
+    for(var k in obj1){
+        obj[k] = obj1[k];
+    }
+
+//    2.原型继承
+//    2.1  通过混入的方式为原型新增成员，以实现继承
+//    2.2  直接替换原型对象 实现继承
+    function Person() {
+
+    }
+    for (var k in obj) {
+        Person.prototype[k] = obj[k];
+    }
+
+    var obj = {
+        name: "",
+        age: 18,
+        sayHello: function () {
+
+        }
+    }
+    Person.prototype = obj;
+
+//    3  经典继承 以及经典继承的兼容性封装
+    var obj = Object.create(obj1);
+    console.log(obj.__proto__ === obj1);
+    function myCreate(obj){
+        if(Object.create){
+            return Object.create(obj);
+        }else{
+            function F(){}
+            F.prototype = obj;
+            return new F();
+        }
+    }
+
+</script>

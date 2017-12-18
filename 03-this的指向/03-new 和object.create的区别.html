@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*
+    Object.create =  function (o) {
+    var F = function () {};
+    F.prototype = o;
+    return new F();
+};
+     */
+    var Base = function () {
+        this.a = 2
+    }
+    var s = {
+        name:'majunchang'
+    }
+    var o1 = new Base();
+    Base.prototype.a = 3;
+        var o2 = Object.create(s);
+//    var o2 = function (Base) {
+//        var F = function () {
+//            console.log('majnchang');
+//        }
+//        F.prototype = Base
+//        return new F()
+//    }
+    console.log(o1.a); // 2
+    console.log(o2.name); // undefined
+    console.log(o2);
+    var obj = {
+        name:'xiaoming',
+        age:18
+    }
+    var obj1 = Object.create(obj)
+    console.log(obj1);
+    console.log(obj1.name);
+</script>

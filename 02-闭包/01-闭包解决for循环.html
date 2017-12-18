@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>产品一</p>
+<p>产品二</p>
+<p>产品三</p>
+<p>产品四</p>
+<p>产品五</p>
+</body>
+</html>
+
+<script>
+    //  第一种方法
+    //    window.onload = function () {
+    //        var arr = document.getElementsByTagName('p');
+    //        // 将i  绑定到数组的每一项中
+    //        for (var i = 0; i < arr.length; i++) {
+    //            arr[i].i = i;
+    //            arr[i].onclick = function () {
+    //                console.log(this.i);
+    //            }
+    //        }
+    //
+    //    }
+    console.log('=============');
+    //  第二种方法
+    //    window.onload = function () {
+    //        var arr = document.getElementsByTagName('p');
+    //
+    //        for (var i = 0; i < arr.length; i++) {
+    //            arr[i].onclick = function (arg) {
+    //                return function () {
+    //                    console.log(arg);
+    //                }
+    //            }(i)
+    //        }
+    //
+    //    }
+
+    // 第三种方法  在闭包中 使用一个局部变量去保存i
+//    window.onload = function () {
+//        var arr = document.getElementsByTagName('p');
+//
+//        for (var i = 0; i < arr.length; i++) {
+//            (function () {
+//                var temp = i;
+//                arr[i].onclick = function () {
+//                    console.log(temp);
+//                }
+//            })();
+//        }
+//    }
+
+// 第四种方法 通过Function的构造函数
+    /*
+
+解决思路:
+    通过 new 使用 Function 的构造函数 创建 Function 实例实现,由于传入的函数体的内容是字符串,故 Function 得到的是一个字符串拷贝,而没有得到 i 的引用(这里是先获取 i.toString()然后与前后字符串拼接成一个新的字符串,Function 对其进行反向解析成 JS 代码)
+
+ */
+    var arr = document.getElementsByTagName('p');
+
+    for (let i = 0; i < arr.length; i++) {
+//        arr[i].onclick = new Function(console.log(i))
+        arr[i].onclick = function () {
+                console.log(i);
+        }
+    }
+
+</script>

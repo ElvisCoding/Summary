@@ -1,0 +1,16 @@
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: #6c94be;
+}
+/*原来的按钮的一些属性和别的属性*/
+/*对css类的样式进行混入*/
+.btn_b_d_b {
+  width: 200px;
+  height: 50px;
+  background: #fff;
+  border: 1px solid #ccc;
+  background: red;
+  display: block;
+  width: 100%;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+/*
+生成类的实例对象的写法，与 ES5 完全一样，也是使用new命令。前面说过，如果忘记加上new，像函数那样调用Class，将会报错
+
+与 ES5 一样，实例的属性除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）。
+
+constructor 是类的默认方法 通过new命令生成对象实例的时候 自动调用该方法 如果没有显式定义 会被默认添加
+ */
+
+class Point{
+    constructor(x,y){
+        this.x = x;
+        this.y = y;
+        console.log(this);
+        return this
+    }
+    toString(){
+
+    }
+}
+
+var point  =  new Point();
+
+console.log(point instanceof Point);
+
+
+</script>

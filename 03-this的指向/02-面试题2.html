@@ -9,6 +9,15 @@
 </body>
 </html>
 <script>
+    var len = 10;
+    var timer = null;
+    for (var i = 0; i < len; i++) {
+        (function (i) {
+            timer = setTimeout(() => {
+                console.log(i);
+            }, 0)
+        })(i)
 
+    }
 
 </script>

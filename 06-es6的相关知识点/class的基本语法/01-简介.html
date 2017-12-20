@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*
+   1  ES6 的class可以看作只是一个语法糖，它的绝大部分功能，ES5 都可以做到，新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。
+
+    2 类的数据类型就是函数，类本身就指向类原型的构造函数。
+
+    3 构造函数的prototype属性，在 ES6 的“类”上面继续存在。事实上，类的所有方法都定义在类的prototype属性上面。
+
+    4 类不存在变量提升  声明一定要在使用的前面才可以
+
+    5
+     */
+    class Bar{
+        foo(){
+            console.log('马俊昌');
+        }
+    }
+    var b  = new Bar();
+    b.foo();
+    console.log('=======================');
+    console.log(Bar === Bar.prototype.constructor);
+    console.log('========================');
+    class Point{
+        constructor(){
+
+        }
+        toString(){
+
+        }
+    }
+
+    // 等同于
+    Point.prototype = {
+        constructor(){},
+        toString(){}
+    }
+</script>

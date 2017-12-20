@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*
+      Promise是异步编程的一种解决方案 为了解决回调地狱的问题
+      Promise对象是一个构造函数，用来生成Promise实例
+      1 对象的状态不受外界的影响，
+      2 状态一旦改变了就会一直保持这个结果
+      =============================================
+      构造函数接受一个函数作为参数 改函数的两个参数是resolve和reject 由js引擎提供 不需要自己部署
+      resolve的作用是 将Promise对象的状态由未完成变为成功 reject是将未完成变为失败
+      =============================================
+      Promise实例生成了以后 可以使用then方法 指定reslove和reject的状态的回调函数
+
+
+      为什么在then的写法中 通常使用catch去捕捉异常？
+      1 当有多个promise对象的时候 他们之中任何一个抛出了错误 都会被catch去捕获（Promise对象的错误具有冒泡的性质，会一直向后传递，错误总是会被下一个catch语句所捕获）
+      2 更加接近同步的写法
+      3 如果不使用catch方法指定错误处理的回调函数 Promise对象的错误不会传递到外层 不会有任何反应）
+
+
+      Promise.all() 用于将多个Promise实例包装为一个新的Promise实例
+      const  p = Promise.all([p1,p2,p3])
+      只有p1,p2,p3都变为resolve  o才变成reslove
+      有一个是reject  p就是reject
+
+      Promise.race()将多个 Promise 实例，包装成一个新的 Promise 实例
+     只要p1、p2、p3之中有一个实例率先改变状态，p的状态就跟着改变。那个率先改变的 Promise 实例的返回值，就传递给p的回调函数。
+
+
+
+     */
+
+</script>

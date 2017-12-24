@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //        call
+    //        语法：  函数名.call(要让this指向谁, arg1, arg2, arg3...argN)
+    //        功能：
+    //        1. 调用该函数
+    //        2. 改变函数内的this指向
+    //        3. 将第二个参数之后的所有参数，当做实参依次传递给该函数
+    //        apply
+    //        语法：  函数名.apply(要让this指向谁, 数组或者伪数组)
+    //        功能：
+    //        1. 调用该函数
+    //        2. 改变函数内的this指向
+    //        3. 将第二个参数的数组或者伪数组，中的元素，一一拆解，依次传给函数作为参数
+    //        提问：什么时候用call，什么时候用apply？
+    //        当参数的个数确定的情况下，使用call
+    //        当参数个数不确定的情况下使用apply
+    //        注意，
+    //         1. 当传入的第一个参数为null或者Undefined的时候，this会指向window
+    //         2. 当传入的第一个参数为简单数据类型的值的时候，会默认的将基本数据类型转换成其对应的基本包装类型的数据，this指向该包装类型的数据
+
+
+    // 应用场景  快速求出数组中的最大值 最小值
+    // 伪数组 转换为真数组  伪数组借用真实数组的方法
+    //
+    var fakeArr = {
+        0: 1,
+        1: 2,
+        2: 3,
+        3: 4,
+        4: 5,
+        length: 5
+    };
+    // 在这里列举出两种 将伪数组转化为真数组的方法
+
+//    var realArr = [6,2];
+//    [].push.apply(fakeArr,realArr);
+//    console.log(fakeArr);
+
+       var newarr =  [].slice.call(fakeArr);
+    console.log(newarr);
+
+</script>

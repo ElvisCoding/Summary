@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*
+    map
+  语法： 数组.map(function(value, index, arr){})
+  value: 指的就是当前正在遍历的元素
+  index: 指的就是正在遍历的元素的索引
+  arr： 就指当前正在遍历的数组！
+  map方法拥有返回值，将每次调用回调函数之后，回调函数的返回值拼接成一个数组,作为map的返回值
+
+     */
+    // 原生js的map方法： 只可以遍历数组，不可以遍历伪数组也不可以遍历对象，中途可以跳出循环，this指向的是window，前两个参数是 v  i 。
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    var newArr = arr.map((item, index) => {
+        if (index === 6) {
+            return null
+        }
+        return item + 1;
+    })
+    console.log(newArr);
+    /*  在这里引入判断数组和对象的方法
+      function createObj(name, age, gender){
+            var obj = {};
+            obj.name = name;
+            obj.age = age;
+            obj.gender = gender;
+            //由于是函数调用模式，所以this打印出来是window
+            console.log(this);
+            return obj;
+        }
+        var p = createObj("郑天杨", 18, "male");  // 调用方式是函数的调用方式
+        console.log(p);
+        console.log(p.__proto__);
+        console.log({}.__proto__ === Object.prototype);
+        console.log({}.__proto__ === Array.prototype);
+        console.log([].__proto__ === Array.prototype);
+        console.log([].__proto__ === Object.prototype);
+     */
+    var obj = {name: 'jim6', age: 59, gender: '男',length:10}
+    console.log(map(obj, (item, index) => {
+        return item ;
+    }));
+
+    function map(ele, callback) {
+        var rest = [], tem;
+        if (ele.__proto__ === Array.prototype) {
+            // 这是在数组中的操作
+            for (var i = 0; i < ele.length; i++) {
+                tem = callback(ele[i], i);
+                if (tem != null) {
+                    rest.push(tem);
+                }
+            }
+        }
+        else {
+            // 这是在对象中的操作
+            for (var k in ele) {
+                tem = callback(ele[k], k);
+                if (tem != null) {
+                    rest.push(tem);
+                }
+            }
+        }
+        return rest;
+    }
+
+
+</script>

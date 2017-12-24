@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    // 在使用递归进行斐波那契数列计算的时候  存在大量的性能浪费
+    /*
+     我们可以把上次计算后的值 村春起来  方便下次调用
+     */
+
+    function createFib(n) {
+        var cache = [];
+         function fib(n) {
+            var num = cache[n];
+            if (num) {
+                return num
+            }
+            else {
+                if (n <= 2) {
+                    return 1
+                } else {
+                    num = fib(n - 1) + fib(n - 2)
+                }
+                cache[n] = num
+                return num
+            }
+        }
+        return fib(n)
+    }
+
+   var f = createFib(5);
+    console.log(f);
+
+    function o(m) {
+        console.log(m);
+        i(m)
+        function i(m) {
+            console.log(m);
+        }
+    }
+
+    console.log(o(10));
+</script>

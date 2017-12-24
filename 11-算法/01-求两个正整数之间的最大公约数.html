@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 欧几里德算法 辗转相除
+    function get(a, b) {
+        if (b == 0) {
+            return a
+        }
+        else {
+            return get(b, a % b)
+        }
+    }
+
+    console.log(get(49, 63));
+</script>

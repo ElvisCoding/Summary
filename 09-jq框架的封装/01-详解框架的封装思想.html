@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //  jq的核心操作
+    /*
+       首先是选择dom 然后对dom进行一系列的操作
+     */
+    function init() {
+        // 在这里进行的dom的选择器  在里面传入类选择器 id选择器 以及标签名称等
+
+    }
+
+    // init 获取到dom元素之后 需要进行其他的操作 这里我们以each举例  进行遍历
+    jQuery.fn = jQuery.prototype = {
+        constructor: jQuery,
+        each: function () {
+
+        },
+        map:function () {
+
+        }
+
+    }
+    // 我们希望 init获取的dom直接可以使用jQuery中封装的一系列方法
+    init.prototype = jQuery.prototype = jQuery.fn
+    jQuery = $ = function (seletor) {
+        return new init(seletor)
+    }
+    //  进一步处理 将init挂载到jQuery的原型对象上面(为了更好的就行优化和更新)
+    var init = jQuery.fn.init = function () {
+
+    }
+
+
+
+</script>

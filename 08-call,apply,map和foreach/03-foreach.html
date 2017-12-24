@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+
+    // 原生js的 forEach
+    /*
+       1 只能遍历数组，不能遍历伪数组或者对象
+       2 中途不能跳出循环
+       3 this指向的是window
+     */
+
+//    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+//    var arr1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+//
+//    arr.forEach(function (value, index, arr1) {
+//        console.log(this);
+//        console.log(value + '===' + index);
+//    })
+
+    // jq中的each方法
+    /*
+        1  中途可以跳出循环
+        2  返回当前正在遍历的这个对象
+        3  既可以传入数组 也可以传入对象
+
+     */
+    var fakeArr = {
+        0: 1,
+        1: 2,
+        2: 3,
+        3: 4,
+        4: 5,
+        length: 5
+    };
+    var realArr = [1, 2, 3, 4, 5];
+    var obj = {
+        name: "唐嫣",
+        age: "20",
+        figure: "非常棒"
+    }
+
+    //  封装jq的each方法
+    function each(ele, callback) {
+        if (ele.length != undefined) {
+            for (var i = 0; i < ele.length; i++) {
+                if (callback.call(ele, i, ele[i]) === false) {
+                    return false
+                }
+            }
+
+        } else {
+            for(var k in ele){
+                if(callback.call(ele,k,ele[k]) ==  false){
+                    return false;
+                }
+            }
+
+        }
+        return ele;
+    }
+
+    each(fakeArr,function (index,value) {
+        console.log(value);
+        if(index === 3){
+            return false
+        }
+    })
+
+    each(obj,function (index,value) {
+        console.log(index+'==='+value);
+        if(index == 'age'){
+            return false
+        }
+    })
+
+</script>

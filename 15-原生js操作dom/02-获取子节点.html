@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="mv">
+    <li>琳琳</li>
+    <li id='zhao'>昭君</li>
+    <li>汪汪</li>
+    <li>琳琳2</li>
+</ul>
+</body>
+</html>
+<script>
+
+    var mv = document.getElementById('mv');
+    console.log(mv);
+    var childNodes = mv.childNodes;
+    console.log(childNodes);
+
+    var zhao = document.getElementById('zhao');
+    var parent = zhao.parentNode;
+    console.log(parent);
+</script>

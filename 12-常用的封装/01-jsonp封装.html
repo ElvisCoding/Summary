@@ -5,29 +5,62 @@
     <title>Title</title>
 </head>
 <body>
-<button  id='begin'>开始 </button>
-<button  id='end'>结束</button>
+<button id='begin'>开始</button>
+<button id='end'>结束</button>
 </body>
 </html>
 <script>
-//    var begin = document.getElementById('begin')
-//    var end = document.getElementById('end')
-//    var timer;
-//    begin.onclick = function () {
-//        clearInterval(timer)
-//        timer = setInterval(()=>{
-//            var a = 1;
-//            b=a+1;
-//            console.log(b);
-//        },500)
-//    }
-//    end.onclick = function () {
-//        clearInterval(timer)
-//    }
-//    function () {
-//
-//    }
+    var begin = document.getElementById('begin')
+    var end = document.getElementById('end')
+    //    var timer;
+    //    begin.onclick = function () {
+    //        clearInterval(timer)
+    //        timer = setInterval(()=>{
+    //            var a = 1;
+    //            b=a+1;
+    //            console.log(b);
+    //        },500)
+    //    }
+    //    end.onclick = function () {
+    //        clearInterval(timer)
+    //    }
+    //    function () {
+    //
+    //    }
 
-// https://www.jianshu.com/p/0bad94e15d34
+    // https://www.jianshu.com/p/0bad94e15d34
 
+    // 我们希望通过对象的方式去调用  类似于 axios那种
+    begin.onclick = function () {
+        jsonp({
+            url: 'ewqewqeqw',
+            query: {},
+            callbackName: '',
+            success: function (data) {
+                // 定义成功之后的处理事件
+                console.log(data);
+            }
+        })
+    }
+
+    function jsonp(options) {
+        var script = document.createElement('script');
+        // 遍历query部分 将字符串进行拼接
+        options.url += '?'
+        for (var k in options.query) {
+            options.url += k + '=' + options.query[k] + '&';
+        }
+        options.url.substring(options.url.length - 1, 1);
+
+        script.src = options.url;
+        script.type = 'text/javascript';
+        document.body.appendChild(script)
+        if (options.callbackName === '') {
+            options.callbackName = 'fn' + Math.random().toString().split('.')[1];
+        }
+        options.url += 'callback' + '=' + options.callbackName;
+        window[options.callbackName] = function (data) {
+            options.success(data)
+        }
+    }
 </script>

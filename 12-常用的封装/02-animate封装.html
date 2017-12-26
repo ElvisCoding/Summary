@@ -3,8 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
-
+<button id="btn">按钮</button>
+<div id="demo"></div>
 </body>
 </html>
+<script>
+    var btn = document.getElementById("btn");
+    var demo = document.getElementById("demo");
+    btn.onclick = function () {
+        animate(demo, {"zIndex": 5});
+    };
+
+    /*
+    animate的封装 支持回调函数  支持通过json格式传入参数
+     */
+    function animate(dom, json, callback) {
+        clearInterval(dom.timer)
+        var flag = true;
+        dom.timer = setInterval(() => {
+            for (var k in json) {
+                if (k === 'opacity') {
+                    var leader = getStyle(dom, k) * 100;
+                    var target = json[k] * 100;
+                    var step = (target - leader) / 10;
+                    step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    dom.style[k] = leader / 100;
+
+                } else if (k === 'zIndex') {
+                    dom.style[k] = json[k];
+                } else {
+                    var leader = getStyle(dom, k) || 0;
+                    var target = json[k];
+                    var step = (target - leader) / 10;
+                    step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    dom.style[k] = leader+'px'
+                }
+            }
+            if(leader != target){
+                flag = false
+            }
+            if(flag){
+                clearInterval(dom.timer);
+                if(callback){
+                    callback()
+                }
+            }
+
+        }, 15)
+
+    }
+
+
+    function getStyle(dom, attr) {
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(dom, null)[attr]
+        } else {
+            return obj.currentStyle[attr]
+        }
+    }
+
+</script>

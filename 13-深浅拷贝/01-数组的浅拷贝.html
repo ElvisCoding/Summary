@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    // 数组的浅拷贝
+    /*
+       浅拷贝：浅拷贝是拷贝引用，拷贝后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响
+       深拷贝：在堆中重新分配内存,并且把源对象所有属性都进行新建拷贝，拷贝后的对象与原来的对象是完全隔离，互不影响
+      arr1 和arr 同时指向堆中的一块内存
+     */
+    var arr = [1, 2, 3];
+    var arr1 = arr;
+    //    arr1[0] = 'a';
+    //    arr1[10] = 2;
+    //    console.log(arr);
+    //    console.log(arr1);
+
+    //  深拷贝
+    var arr2 = arr.slice();
+    arr2[0] = 'a';
+    console.log(arr);
+    console.log(arr2);
+    // 深拷贝
+    var arr3 = arr.concat();
+    arr3[0] = 'b';
+    console.log(arr);
+    console.log(arr3);
+    //
+    var arr4 = JSON.parse(JSON.stringify(arr));
+    arr4[0] = 'majunchang'
+    console.log(arr);
+    console.log(arr4);
+    //
+
+    var arr5 = $.extend(true,[],arr);
+    arr5[0] = 'liukehan'
+    console.log(arr);
+    console.log(arr5);
+
+//    最后一种方法 遍历数组 然后用新数组进行添加
+
+</script>

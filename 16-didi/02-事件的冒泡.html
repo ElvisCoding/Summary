@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #content {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+        }
+
+        #btn {
+            width: 80px;
+            height: 80px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div id="content">content
+    <div id="btn">button</div>
+</div>
+</body>
+</html>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+
+    var content = document.getElementById("content");
+    var btn = document.getElementById('btn');
+//    btn.onclick = function(){
+//        alert("btn");
+//    };
+    content.onclick = function(){
+        alert("content");
+    };
+    document.onclick = function(){
+        alert("document");
+    }
+    $('#btn').on('click',function () {
+        alert("btn");
+    })
+</script>

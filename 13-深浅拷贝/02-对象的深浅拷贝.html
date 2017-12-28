@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+
+    var obj = {
+        name:'刘亦菲',
+        age:25,
+        sayhi:function () {
+            console.log(this.name);
+        }
+    }
+
+    var obj1 = {};
+    [].concat.call(obj1,obj)
+    console.log(obj1);
+
+    var obj2 = $.extend(true,{},obj)
+    obj2.name = '李一桐';
+    console.log(obj);
+    console.log(obj2);
+
+
+    var obj3 = JSON.parse(JSON.stringify(obj))
+    obj3.name = '刘慧君'
+    console.log(obj);
+    console.log(obj3);
+</script>

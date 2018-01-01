@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+        闭包的原理 是因为js的变量作用域  下级作用域可以访问上级作用域 而上次作用域无法访问下级作用域
+        出发点 想要在函数外部得到函数内部声明的局部变量
+        含义： 是一个可以访问的  独立的 数据的函数  是一个将函数内部和函数外部连接起来的桥梁
+        存在的问题： 会使函数中的变量都保存在内存中 内存消耗很大
+                    会在父函数外部改变父函数内部变量的值
+         那么问题来了 如何在js中 去释放内存
+         如果是普通的数据类型 可以设置为undefined  也可以 用一个对象进行封装 然后使用delete方法
+         再不然就是直接置为null  没有引用了以后 js的垃圾回收机制 会在某个时间点 将占用的内存进行释放
+
+
+     */
+
+//    function outter() {
+//        var foo = 'baz';
+//        console.log('majunchang');
+//        function inner() {
+//            console.log('刘亦菲');
+//            console.log(foo);
+//        }
+//
+//        return inner()
+//    }
+//    outter()
+
+    function outter() {
+        var foo = 'baz';
+        console.log('majunchang');
+        return function inner() {
+            console.log('刘亦菲');
+            console.log(foo);
+        }()
+    }
+    outter()
+
+</script>

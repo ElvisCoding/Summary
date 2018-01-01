@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+     1 js中的基本数据类型有
+    undefined null number string boolean
+    在使用 typeof 运算符的时候 会发现typeof(null)  返回object  原因是js在最初实现的一个错误 后来被ecmaScript沿用下来 可以这样解释：null即是一个不存在的对象的占位符
+
+    （null == undefined） // 为true  要注意 这里用的是两个等号
+    1.1 es6中新增了symbol
+    Symbol值有symbol函数生产 是独一无二的
+    Symbol函数前面不能使用new命令   symbol值不是对象 可以理解为一种类似于字符串的数据类型
+
+    2 复杂数据类型
+    Object Array Function Date  regexp
+    2.1 es6 中的class可以看成是构造函数的另一种写法
+
+     */
+
+    /*
+如何去判断这些数据类型
+1 对于简单的数据类型来说
+我们可以使用typeof()函数
+2 对于引用类型来说 所有的引用类型都会返回 "object"
+2.1 可以使用instanceof
+ instanceof 用来判断一个变量是否是某个对象的实例,instanceof 无法对原始数据类型进行判断
+2.2  使用toString方法   用于将当前对象以字符串的形式进行返回
+2.3 constructor 属性返回对创建此对象的数组函数的引用
+就是返回对象相对应的构造函数。从定义上来说跟instanceof不太一致，但效果都是一样的
+
+如: (a instanceof Array) //a是否Array的实例？true or false
+　 (a.constructor == Array) // a实例所对应的构造函数是否为Array? true or false。
+     */
+    var arr = new Array();
+    console.log(typeof (arr));
+    var obj = {};
+    console.log(typeof (obj));
+console.log('========================');
+    console.log(obj instanceof(Object));
+    console.log(obj instanceof(Array));
+    console.log(arr instanceof(Object));
+    console.log(arr instanceof(Array));
+
+    var valide = (function(){
+        // 是否是字符串
+        function isString(value){
+            return Object.prototype.toString.call(value) == "[object String]";
+        }
+        // 是否是数字
+        function isNumber(value){
+            return Object.prototype.toString.call(value) == "[object Number]";
+        }
+        // 是否是布尔值
+        function isBoolean(value){
+            return Object.prototype.toString.call(value) == "[object Boolean]";
+        }
+        // 是否undefined
+        function isUndefined(value){
+            return Object.prototype.toString.call(value) == "[object Undefined]";
+        }
+        // 是否是null
+        function isNull(value){
+            return Object.prototype.toString.call(value) == "[object Null]";
+        }
+        // 是否数组
+        function isArray(value){
+            return Object.prototype.toString.call(value) == "[object Array]";
+        }
+        // 是否是函数
+        function isFunction(value){
+            return Object.prototype.toString.call(value) == "[object Function]";
+        }
+        // 是否是对象
+        function isObject(value){
+            return Object.prototype.toString.call(value) == "[object Object]";
+        }
+        // 是否是正则表达式
+        function isRegExp(value){
+            return Object.prototype.toString.call(value) == "[object RegExp]";
+        }
+        // 是否是日期对象
+        function isDate(value){
+            return Object.prototype.toString.call(value) == "[object Date]";
+        }
+        return {
+            isString: isString,
+            isNumber: isNumber,
+            isBoolean: isBoolean,
+            isUndefined: isUndefined,
+            isNull: isNull,
+            isArray: isArray,
+            isFunction: isFunction,
+            isObject: isObject,
+            isRegExp: isRegExp,
+            isDate: isDate
+        };
+    })();
+    console.log('========================');
+
+
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .left {
+            float: left;
+            width: 100px;
+            margin-right: 20px;
+            background-color: red;
+        }
+
+        .right {
+            overflow: hidden;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="left"><p>left</p></div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    // https://segmentfault.com/a/1190000004424442
+/*
+        原理 使用 float+bfc
+        优点 可以设置浮动的margin来控制间距
+ */
+</script>

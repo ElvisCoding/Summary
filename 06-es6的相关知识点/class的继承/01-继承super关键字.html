@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+      super关键字
+      由来： this关键字总是指向函数所在的当前对象，ES6 又新增了另一个类似的关键字super，指向当前对象的原型对象
+    */
+
+    //  用法1 super作为函数调用时，代表调用父类的构造函数。ES6 要求，子类的构造函数必须执行一次super函数
+    /*
+        通过下面的例子可以知道  再super（）执行的时候 指向的是子类B的构造函数  也就是说super()内部的this指向的是B
+
+        作为函数调用时 super()只能在子类的构造函数中，用在其他的地方就会报错
+     */
+
+    class A {
+        constructor() {
+            console.log(new.target.name);
+        }
+    }
+
+    class B extends A {
+        constructor() {
+            super()
+        }
+
+        // 用在其他的地方就会报错
+        // m(){
+        //     super()
+        // }
+    }
+
+    new A();
+    new B();
+
+    /*
+      第二种情况  super作为对象的时候 再普通方法中指向父类的原型对象 再静态方法中 指向父类
+
+      下面的这个例子说明 子类的super.p()  就是将super作为一个对象调用 此时指向的是父类的原型 也就是 F.prototype.p()
+
+      注意： 由于super指向的是父类的原型对象 所以定义在父类实例的方法或者属性  是无法通过super调用的
+     */
+    class F {
+        constructor() {
+            this.age = 2;
+        }
+
+        p() {
+            return 2;
+        }
+
+        print() {
+            console.log('fulei ');
+            console.log(this.heihei);
+        }
+    }
+
+    //  如果属性定义在父类的原型对象上 子类的super.属性 就可以访问到值
+    F.prototype.hehe = '呵呵呵';
+    F.prototype.heihei = '哈哈';
+
+    class C extends F {
+        constructor() {
+            super();
+            console.log(super.p()); // 2
+            this.age = super.age  // undefined
+            this.hehe = super.hehe;
+            this.heihei = 'heihei';
+        }
+
+        getHeihei() {
+            super.print()
+        }
+    }
+
+    var c = new C();
+    console.log(c.age);
+    console.log(c.hehe);
+    //  super.print() 虽然调用的是A.prototype.print() 但是A.prototype.print() 内部的this指向的是子类B  也就是实际上super.print.call(this)  赋值的属性会变成子类实例的属性
+    c.getHeihei()
+</script>

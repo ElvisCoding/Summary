@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type='text/javascript' src="url?callack">
+
+</script>
+<script>
+    function callback() {
+        // 处理程序
+    }
+
+    //  还有一种就是进行封装的进行
+    function jsonp(url, callback, data) {
+        // 1. 处理URl  将data进行解析 然后拼接到字符串中
+        var dataString = url.indexOf('?') === -1 ? '?' : '&';
+        for (var k  in data) {
+            dataString += k + '=' + data[k] + '&';
+        }
+
+        // 2. 生命一个随机的无重复的函数
+        var JsonCallBack = Math.random().toString().split('.')[1];
+        dataString += 'callback' + '=' + JsonCallBack;
+
+        // 3. 创建一个script标签 配置属性 然后添加到body中  callback执行完毕之后 再去掉这个标签
+        var script = document.createElement('script');
+        script.src = url + dataString;
+        document.body.appendChild(script);
+        window.JsonCallBack = function (callback) {
+            callback('形参')
+            document.body.removeChild(script);
+        }
+
+    }
+
+</script>

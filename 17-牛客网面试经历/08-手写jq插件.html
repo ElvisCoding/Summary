@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var iQuery = function () {
+        return new Object()
+    }
+
+    // 扩展能力
+    iQuery.extend = iQuery.fn.extend = function (options) {
+        for (var k in options) {
+            this[k] = options[k];
+        }
+    };
+
+    iQuery.extend({
+        css: function (name, value) {
+            if (!value) {
+                if (typeof name === 'string') {
+                    return this[0].style[name] || window.getComputedStyle(this[0].name);
+                } else {
+                    return this.each(function () {
+                        var that = this;
+                        iQuery.each(name, function (k, v) {
+                            that.style[k] = v;
+                        })
+                    })
+                }
+            } else {
+                this.each(function () {
+                    this[name] = value;
+                })
+            }
+        }
+    })
+
+    iQuery.fn.extend({
+        insterBefore: function (nodeExt, node) {
+            nodeExt.parentNode.insertBefore(node, nodeExt)
+        },
+        insterAfter: function (nodeExt, node) {
+            var parent = nodeExt.parentNode;
+            if (nodeExt == parent.lastChild) {
+                parent.appendChild(node)
+            } else {
+                parent.insertBefore(node, nodeExt);
+            }
+        }
+    })
+
+    /*
+     // 在nodeExt前面插入node
+        insertBefore: function (nodeExt, node) {
+            nodeExt.parentNode.insertBefore(node, nodeExt);
+        },
+        // 在nodeExt后面插入node
+        insertAfter: function (nodeExt, node) {
+            // 就要进行一下判断  nodeExt 是否是其父元素的最后一个子元素  如果是的话，父元素就直接添加node就可以了，否则的话 找nodeExt的下一个元素，然后追加到前面
+            var parent = nodeExt.parentNode;
+            if (nodeExt == parent.lastChild) {
+                parent.appendChild(node);
+            }
+            else {
+                parent.insertBefore(node, nodeExt.nextSibling);
+            }
+        }
+
+
+
+      css:function (name,value) {
+                // 有value是单挑获取  没有是获取 获取的里面又分为 对象和字符串
+                if(value === undefined){
+                    if(typeof name==='string'){
+                        // 字符串
+                        return this[0].style[name]||window.getComputedStyle(this[0])[name];
+                    }else {
+                        //对象
+                        return this.each(function () {
+                            var that = this;
+                            iQuery.each(name,function (k,v) {
+                                that.style[k] = v;
+                            });
+                        });
+                    }
+                }
+                else {
+                    return this.each(function () {
+                        this.style[name] = value;
+                    })
+                }
+            },
+     */
+
+
+</script>

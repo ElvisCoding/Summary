@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    // for (var i = 0; i < 5; i++) {
+    //     setTimeout(() => {
+    //         console.log(i);
+    //     }, 0);
+    // }
+    // 此时打印的全都是5
+
+    //  我们对他进行改造
+    // 1  使用let  块级作用域
+    // for (let i = 0; i < 5; i++) {
+    //
+    //     setTimeout(() => {
+    //         console.log(i);
+    //     }, 0);
+    // }
+    // 2 使用自调用函数
+    for (var i = 0; i < 5; i++) {
+        (function (i) {
+            var temp = i;
+            setTimeout(() => {
+                console.log(temp);
+            }, 0);
+        })(i);
+
+    }
+
+
+</script>

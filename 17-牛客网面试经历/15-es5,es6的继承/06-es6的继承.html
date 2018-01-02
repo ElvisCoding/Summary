@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    class A {
+        constructor(a, b, c,) {
+            this.a = a;
+            this.b = b;
+            this.c = c;
+        }
+
+        sayhi() {
+            console.log('你好,我的朋友' + this.a);
+        }
+
+        sayHello() {
+            console.log('hello');
+        }
+    }
+
+    var a = new A(1, 2, 3);
+    a.sayHello()
+    a.sayhi()
+    console.log(a.a);
+
+
+    class B extends A {
+        constructor(e, d, f) {
+            super(e,d,f)
+        }
+    }
+
+    var b = new B(4, 5, 6);
+    console.log(a);
+    console.log(b);
+    b.sayhi()
+</script>

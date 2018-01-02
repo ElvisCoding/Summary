@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function ajaxPormise(url, method, data) {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url, true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send(JSON.stringify(data));
+            xhr.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    resolve(this.responseText, this)
+                } else {
+                    var resJson = {
+                        code: this.status,
+                        response: this.response
+                    }
+                    reject(resJson, this);
+                }
+            }
+        })
+
+    }
+
+
+</script>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    /1. argumnents 属性， 在函数调用的时候，会将实参存储该对象，该对象只能在函数内部使用
+     2. caller  函数是在那个函数环境中调用的，caller就指向那个函数，如果函数是在全局环境下调用的，那么   caller就undefined
+//3. length  表示函数的实参的个数
+//4. name 表示函数名
+
+     */
+    function foo(num) {
+        if (num <= 1) {
+            return num;
+        }
+        return arguments.callee(num - 1) + arguments.callee(num - 2)
+    }
+
+    console.log(foo(10));
+
+    function fn(a,b,c) {
+        console.log(arguments.length);
+    }
+    fn(1,2)
+</script>

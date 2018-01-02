@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function getNum(num) {
+        var p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (num < 5) {
+                    resolve(num)
+                } else {
+                    reject(num);
+                }
+            }, 1000)
+        })
+        return p;
+    }
+
+    getNum(3)
+        .then((num) => {
+            console.log('resolve');
+            console.log(num);
+        }, (num) => {
+            console.log('reject');
+            console.log(num);
+        })
+
+
+</script>

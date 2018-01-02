@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function ca1(num) {
+        console.log('resolve');
+        console.log(num);
+    }
+
+    function ca2(num) {
+        console.log('reject');
+        console.log(num);
+    }
+
+    function getNum(num) {
+        var p = new Promise((resolve1, reject) => {
+            setTimeout(() => {
+                if (num < 5) {
+                    console.log('jinru');
+                    resolve1((num)=>{
+                        console.log('resolve');
+                        console.log(num);
+                    })
+                } else {
+                    reject((num) => {
+                        console.log('========');
+                        console.log('reject11111');
+                        console.log(num);
+                    })
+                }
+            }, 1000)
+        })
+        return p;
+    }
+
+
+    getNum(3)
+        .then((num)=>{
+            console.log(num);
+        })
+        .catch((err) => {
+        console.log(err);
+    })
+
+
+</script>

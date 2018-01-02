@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>产品一</p>
+<p>产品二</p>
+<p>产品三</p>
+<p>产品四</p>
+<p>产品五</p>
+</body>
+</html>
+<script>
+    /*
+    arr 中的每一项的 onclick 均为一个函数实例(Function 对象),这个函数实例也产生了一个闭包域,
+                这个闭包域引用了外部闭包域的变量,其 function scope 的 closure 对象有个名为 i 的引用,
+                外部闭包域的私有变量内容发生变化,内部闭包域得到的值自然会发生改变
+     */
+    window.onload = function () {
+
+        var arr = document.getElementsByTagName('p');
+//        for (var i = 0; i < arr.length; i++) {
+//            arr[i].onclick = function () {
+//                console.log(i);
+//            }
+//        }
+        for(var i = 0;i<arr.length;i++){
+            arr[i].onclick = new Function("alert("+i+");");
+        }
+    }
+
+
+    var  a =  Function('q')
+    console.log(typeof a);
+    var b = new Function('c')
+    console.log(typeof b);
+
+
+</script>

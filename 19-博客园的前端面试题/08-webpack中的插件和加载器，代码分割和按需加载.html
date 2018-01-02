@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    // 加载器 是对于所有的模块 组件 （html css js 图片）这些等 进行处理
+    //  插件 是对于功能的扩展 比如说是 提取公共模块 代码压缩 删除重复依赖 浏览器的热加载
+
+    //  为什么要实现 代码分割和按需加载
+    /*
+        通常解析一个js文件  由上而下 全部加载完毕
+        我们想要实现的是  点击一个按钮 只加载和这个按钮有关的代码和相关的依赖
+
+     */
+
+    require.ensure([], function(require){
+        var list = require('./list');
+        list.show();
+    }, 'list');
+
+    //  list.fb874860b35831bc96a8.js
+
+</script>

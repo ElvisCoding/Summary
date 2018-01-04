@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //  解决对象实例化重复的问题 
+    function factory(name, age, gender) {
+        var p = {};
+        p.name = name;
+        p.age = age;
+        p.gender = gender;
+        return p;
+    }
+    var s = factory('xiaoming',18,'男');
+    var m = factory('xiaomei',19,'女');
+    console.log(s.name);
+    console.log(m.name);
+
+</script>
